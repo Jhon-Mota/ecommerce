@@ -24,7 +24,7 @@ public class ProductController {
     @PostMapping
     private ResponseEntity<String> registerProduct(@RequestBody @Valid ProductDto dto) {
         service.registerProduct(dto);
-        return ResponseEntity.accepted().body("Your product has been registered.");
+        return ResponseEntity.ok().body("Your product has been registered.");
     }
 
     @GetMapping("/{name}")
@@ -34,7 +34,7 @@ public class ProductController {
     }
 
     @GetMapping
-    private ResponseEntity<List<Product>> listAllProducts(){
+    public ResponseEntity<List<Product>> listAllProducts(){
         List<Product> products = service.listAllProducts();
         return ResponseEntity.ok().body(products);
     }
